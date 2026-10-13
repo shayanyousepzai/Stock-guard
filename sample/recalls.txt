@@ -1,0 +1,14 @@
+SAMPLE NOTICE (fictional)
+Product: Metformin 500mg tablets
+Batch numbers: MET2611C, MET2999Z
+Reason: Failed dissolution test
+Ref: RC-2026-114, call 0800 555 0199
+
+---
+Dear pharmacist, the maker of Salbutamol 100mcg inhalers is withdrawing lots SAL0932 and SAL0933 after reports of a faulty dose counter. Please quarantine them. Ref RC-2026-121, issued 3 Oct 2026.
+
+---
+Product: Omeprazole 20mg capsules
+All batches recalled.
+Reason: Packaging contamination risk
+Ref: RC-2026-130

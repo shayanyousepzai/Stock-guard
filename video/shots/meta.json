@@ -1,0 +1,695 @@
+{
+ "scale": 1.2,
+ "rects": {
+  "empty": {
+   "#drop": {
+    "x": 24,
+    "y": 133.5,
+    "w": 291,
+    "h": 105.5
+   },
+   "#recalls": {
+    "x": 24,
+    "y": 280,
+    "w": 291,
+    "h": 120
+   },
+   ".empty h2": {
+    "x": 396,
+    "y": 169,
+    "w": 520,
+    "h": 86.375
+   },
+   "aside": {
+    "x": 0,
+    "y": 0,
+    "w": 340,
+    "h": 900
+   }
+  },
+  "results": {
+   ".hero h2": {
+    "x": 396,
+    "y": 59,
+    "w": 988,
+    "h": 47.515625
+   },
+   ".hero": {
+    "x": 396,
+    "y": 36,
+    "w": 988,
+    "h": 121.515625
+   },
+   ".note": {
+    "x": 396,
+    "y": 179.515625,
+    "w": 988,
+    "h": 130.5
+   },
+   ".stamps": {
+    "x": 396,
+    "y": 332.015625,
+    "w": 988,
+    "h": 99.75
+   },
+   ".stamp": {
+    "x": 396,
+    "y": 332.015625,
+    "w": 238,
+    "h": 99.75
+   },
+   ".stamp#1": {
+    "x": 646,
+    "y": 332.015625,
+    "w": 238,
+    "h": 99.75
+   },
+   ".stamp#2": {
+    "x": 896,
+    "y": 332.015625,
+    "w": 238,
+    "h": 99.75
+   },
+   ".stamp#3": {
+    "x": 1146,
+    "y": 332.015625,
+    "w": 238,
+    "h": 99.75
+   },
+   ".tabs": {
+    "x": 396,
+    "y": 453.765625,
+    "w": 988,
+    "h": 46.5
+   },
+   ".panel table": {
+    "x": 396,
+    "y": 516.265625,
+    "w": 988,
+    "h": 598.75
+   }
+  },
+  "returns": {
+   ".panel .card": {
+    "x": 396,
+    "y": 565.765625,
+    "w": 988,
+    "h": 412
+   },
+   ".panel .card#1": {
+    "x": 396,
+    "y": 991.765625,
+    "w": 988,
+    "h": 190.5
+   },
+   ".panel .card#2": {
+    "x": 396,
+    "y": 1196.265625,
+    "w": 988,
+    "h": 236
+   },
+   ".panel pre": {
+    "x": 415,
+    "y": 701.765625,
+    "w": 950,
+    "h": 213.5
+   },
+   ".panel pre#1": {
+    "x": 415,
+    "y": 1127.765625,
+    "w": 950,
+    "h": 213.5
+   },
+   ".panel pre#2": {
+    "x": 415,
+    "y": 1377.765625,
+    "w": 950,
+    "h": 251
+   }
+  },
+  "reorder": {
+   ".panel table": {
+    "x": 396,
+    "y": 565.765625,
+    "w": 988,
+    "h": 415
+   },
+   ".tabs": {
+    "x": 396,
+    "y": 453.765625,
+    "w": 988,
+    "h": 46.5
+   }
+  },
+  "mobile": {
+   "main": {
+    "x": 0,
+    "y": 821.25,
+    "w": 659.203125,
+    "h": 1628.734375
+   }
+  }
+ },
+ "data": {
+  "today": "2026-10-14",
+  "mapping": {
+   "product": "Item Name",
+   "batch": "Batch No.",
+   "expiry": "Exp. Date",
+   "qty": "Qty On Hand",
+   "unit_cost": "Cost Price",
+   "supplier": "Supplier",
+   "reorder_level": "Min Stock"
+  },
+  "rows_total": 20,
+  "bad_rows": [],
+  "stats": {
+   "recalled": {
+    "count": 5,
+    "value": 113.2
+   },
+   "expired": {
+    "count": 3,
+    "value": 47.8
+   },
+   "critical": {
+    "count": 3,
+    "value": 18.95
+   },
+   "warning": {
+    "count": 2,
+    "value": 27.2
+   },
+   "ok": {
+    "count": 7,
+    "value": 92.2
+   }
+  },
+  "attention": 11,
+  "at_risk": 179.95,
+  "items": [
+   {
+    "product": "Omeprazole 20mg Caps",
+    "batch": "OMP2508F",
+    "expiry": "2027-01-31",
+    "days": 109,
+    "qty": 70,
+    "unit_cost": 0.22,
+    "value": 15.4,
+    "supplier": "Northgate Pharma",
+    "level": 60,
+    "status": "recalled",
+    "recall": "Packaging contamination risk"
+   },
+   {
+    "product": "Metformin 500mg Tabs",
+    "batch": "MET2611C",
+    "expiry": "2027-03-03",
+    "days": 140,
+    "qty": 90,
+    "unit_cost": 0.12,
+    "value": 10.8,
+    "supplier": "MedLine Distributors",
+    "level": 100,
+    "status": "recalled",
+    "recall": "Failed dissolution test"
+   },
+   {
+    "product": "Salbutamol Inhaler 100mcg",
+    "batch": "SAL-0932",
+    "expiry": "2027-04-12",
+    "days": 180,
+    "qty": 12,
+    "unit_cost": 3.8,
+    "value": 45.6,
+    "supplier": "Northgate Pharma",
+    "level": 15,
+    "status": "recalled",
+    "recall": "Faulty dose counter"
+   },
+   {
+    "product": "Omeprazole 20mg Caps",
+    "batch": "OMP2601G",
+    "expiry": "2027-06-21",
+    "days": 250,
+    "qty": 50,
+    "unit_cost": 0.22,
+    "value": 11,
+    "supplier": "Northgate Pharma",
+    "level": 60,
+    "status": "recalled",
+    "recall": "Packaging contamination risk"
+   },
+   {
+    "product": "Salbutamol Inhaler 100mcg",
+    "batch": "SAL-0933",
+    "expiry": "2027-07-31",
+    "days": 290,
+    "qty": 8,
+    "unit_cost": 3.8,
+    "value": 30.4,
+    "supplier": "Northgate Pharma",
+    "level": 15,
+    "status": "recalled",
+    "recall": "Faulty dose counter"
+   },
+   {
+    "product": "Oral Rehydration Salts",
+    "batch": "ORS2504Z",
+    "expiry": "2026-07-16",
+    "days": -90,
+    "qty": 36,
+    "unit_cost": 0.3,
+    "value": 10.8,
+    "supplier": "CareWell Supplies",
+    "level": 30,
+    "status": "expired",
+    "recall": null
+   },
+   {
+    "product": "Amoxicillin 500mg Caps",
+    "batch": "AMX2405B",
+    "expiry": "2026-08-30",
+    "days": -45,
+    "qty": 60,
+    "unit_cost": 0.45,
+    "value": 27,
+    "supplier": "MedLine Distributors",
+    "level": 80,
+    "status": "expired",
+    "recall": null
+   },
+   {
+    "product": "Paracetamol 500mg Tabs",
+    "batch": "PCM2310K",
+    "expiry": "2026-10-04",
+    "days": -10,
+    "qty": 200,
+    "unit_cost": 0.05,
+    "value": 10,
+    "supplier": "CareWell Supplies",
+    "level": 300,
+    "status": "expired",
+    "recall": null
+   },
+   {
+    "product": "Ibuprofen 400mg Tabs",
+    "batch": "IBU2412M",
+    "expiry": "2026-10-17",
+    "days": 3,
+    "qty": 80,
+    "unit_cost": 0.07,
+    "value": 5.6,
+    "supplier": "CareWell Supplies",
+    "level": 100,
+    "status": "critical",
+    "recall": null
+   },
+   {
+    "product": "Cetirizine 10mg Tabs",
+    "batch": "CET2501P",
+    "expiry": "2026-10-26",
+    "days": 12,
+    "qty": 45,
+    "unit_cost": 0.09,
+    "value": 4.05,
+    "supplier": "CareWell Supplies",
+    "level": 50,
+    "status": "critical",
+    "recall": null
+   },
+   {
+    "product": "Atorvastatin 20mg Tabs",
+    "batch": "ATV2509R",
+    "expiry": "2026-11-08",
+    "days": 25,
+    "qty": 30,
+    "unit_cost": 0.31,
+    "value": 9.3,
+    "supplier": "MedLine Distributors",
+    "level": 40,
+    "status": "critical",
+    "recall": null
+   },
+   {
+    "product": "Loratadine 10mg Tabs",
+    "batch": "LOR2507T",
+    "expiry": "2026-11-23",
+    "days": 40,
+    "qty": 55,
+    "unit_cost": 0.08,
+    "value": 4.4,
+    "supplier": "CareWell Supplies",
+    "level": 40,
+    "status": "warning",
+    "recall": null
+   },
+   {
+    "product": "Azithromycin 250mg Tabs",
+    "batch": "AZI2509V",
+    "expiry": "2026-12-23",
+    "days": 70,
+    "qty": 24,
+    "unit_cost": 0.95,
+    "value": 22.8,
+    "supplier": "Northgate Pharma",
+    "level": 20,
+    "status": "warning",
+    "recall": null
+   },
+   {
+    "product": "Amlodipine 5mg Tabs",
+    "batch": "AML2603W",
+    "expiry": "2027-02-28",
+    "days": 137,
+    "qty": 100,
+    "unit_cost": 0.1,
+    "value": 10,
+    "supplier": "MedLine Distributors",
+    "level": 60,
+    "status": "ok",
+    "recall": null
+   },
+   {
+    "product": "Diclofenac Gel 1%",
+    "batch": "DIC2602J",
+    "expiry": "2027-03-23",
+    "days": 160,
+    "qty": 14,
+    "unit_cost": 2.4,
+    "value": 33.6,
+    "supplier": "MedLine Distributors",
+    "level": 10,
+    "status": "ok",
+    "recall": null
+   },
+   {
+    "product": "Amoxicillin 500mg Caps",
+    "batch": "AMX2611A",
+    "expiry": "2027-05-12",
+    "days": 210,
+    "qty": 40,
+    "unit_cost": 0.45,
+    "value": 18,
+    "supplier": "MedLine Distributors",
+    "level": 80,
+    "status": "ok",
+    "recall": null
+   },
+   {
+    "product": "Ciprofloxacin 500mg Tabs",
+    "batch": "CIP2606H",
+    "expiry": "2027-05-31",
+    "days": 229,
+    "qty": 6,
+    "unit_cost": 0.55,
+    "value": 3.3,
+    "supplier": "Northgate Pharma",
+    "level": 20,
+    "status": "ok",
+    "recall": null
+   },
+   {
+    "product": "Vitamin D3 1000IU Caps",
+    "batch": "VTD2701X",
+    "expiry": "2027-08-10",
+    "days": 300,
+    "qty": 90,
+    "unit_cost": 0.06,
+    "value": 5.4,
+    "supplier": "CareWell Supplies",
+    "level": 50,
+    "status": "ok",
+    "recall": null
+   },
+   {
+    "product": "Paracetamol 500mg Tabs",
+    "batch": "PCM2702D",
+    "expiry": "2027-08-31",
+    "days": 321,
+    "qty": 150,
+    "unit_cost": 0.05,
+    "value": 7.5,
+    "supplier": "CareWell Supplies",
+    "level": 300,
+    "status": "ok",
+    "recall": null
+   },
+   {
+    "product": "Metformin 500mg Tabs",
+    "batch": "MET2702A",
+    "expiry": "2027-11-18",
+    "days": 400,
+    "qty": 120,
+    "unit_cost": 0.12,
+    "value": 14.4,
+    "supplier": "MedLine Distributors",
+    "level": 100,
+    "status": "ok",
+    "recall": null
+   }
+  ],
+  "recalls": [
+   {
+    "product": "Metformin 500mg tablets",
+    "batch_numbers": [
+     "MET2611C",
+     "MET2999Z"
+    ],
+    "all_batches": false,
+    "reason": "Failed dissolution test",
+    "matched": 1
+   },
+   {
+    "product": "Salbutamol 100mcg inhalers",
+    "batch_numbers": [
+     "SAL0932",
+     "SAL0933"
+    ],
+    "all_batches": false,
+    "reason": "Faulty dose counter",
+    "matched": 2
+   },
+   {
+    "product": "Omeprazole 20mg capsules",
+    "batch_numbers": [],
+    "all_batches": true,
+    "reason": "Packaging contamination risk",
+    "matched": 2
+   }
+  ],
+  "returns": [
+   {
+    "supplier": "CareWell Supplies",
+    "items": [
+     {
+      "product": "Oral Rehydration Salts",
+      "batch": "ORS2504Z",
+      "expiry": "2026-07-16",
+      "days": -90,
+      "qty": 36,
+      "unit_cost": 0.3,
+      "value": 10.8,
+      "supplier": "CareWell Supplies",
+      "level": 30,
+      "status": "expired",
+      "recall": null,
+      "reason": "Expired 90 days ago"
+     },
+     {
+      "product": "Paracetamol 500mg Tabs",
+      "batch": "PCM2310K",
+      "expiry": "2026-10-04",
+      "days": -10,
+      "qty": 200,
+      "unit_cost": 0.05,
+      "value": 10,
+      "supplier": "CareWell Supplies",
+      "level": 300,
+      "status": "expired",
+      "recall": null,
+      "reason": "Expired 10 days ago"
+     }
+    ],
+    "total": 20.8,
+    "email": "Subject: Return request - 2 batch(es)\n\nHello CareWell Supplies,\n\nPlease arrange collection and credit for the following batches:\n\n- Oral Rehydration Salts | batch ORS2504Z | qty 36 | Expired 90 days ago\n- Paracetamol 500mg Tabs | batch PCM2310K | qty 200 | Expired 10 days ago\n\nThank you."
+   },
+   {
+    "supplier": "MedLine Distributors",
+    "items": [
+     {
+      "product": "Metformin 500mg Tabs",
+      "batch": "MET2611C",
+      "expiry": "2027-03-03",
+      "days": 140,
+      "qty": 90,
+      "unit_cost": 0.12,
+      "value": 10.8,
+      "supplier": "MedLine Distributors",
+      "level": 100,
+      "status": "recalled",
+      "recall": "Failed dissolution test",
+      "reason": "Recalled: Failed dissolution test"
+     },
+     {
+      "product": "Amoxicillin 500mg Caps",
+      "batch": "AMX2405B",
+      "expiry": "2026-08-30",
+      "days": -45,
+      "qty": 60,
+      "unit_cost": 0.45,
+      "value": 27,
+      "supplier": "MedLine Distributors",
+      "level": 80,
+      "status": "expired",
+      "recall": null,
+      "reason": "Expired 45 days ago"
+     }
+    ],
+    "total": 37.8,
+    "email": "Subject: Return request - 2 batch(es)\n\nHello MedLine Distributors,\n\nPlease arrange collection and credit for the following batches:\n\n- Metformin 500mg Tabs | batch MET2611C | qty 90 | Recalled: Failed dissolution test\n- Amoxicillin 500mg Caps | batch AMX2405B | qty 60 | Expired 45 days ago\n\nThank you."
+   },
+   {
+    "supplier": "Northgate Pharma",
+    "items": [
+     {
+      "product": "Omeprazole 20mg Caps",
+      "batch": "OMP2508F",
+      "expiry": "2027-01-31",
+      "days": 109,
+      "qty": 70,
+      "unit_cost": 0.22,
+      "value": 15.4,
+      "supplier": "Northgate Pharma",
+      "level": 60,
+      "status": "recalled",
+      "recall": "Packaging contamination risk",
+      "reason": "Recalled: Packaging contamination risk"
+     },
+     {
+      "product": "Salbutamol Inhaler 100mcg",
+      "batch": "SAL-0932",
+      "expiry": "2027-04-12",
+      "days": 180,
+      "qty": 12,
+      "unit_cost": 3.8,
+      "value": 45.6,
+      "supplier": "Northgate Pharma",
+      "level": 15,
+      "status": "recalled",
+      "recall": "Faulty dose counter",
+      "reason": "Recalled: Faulty dose counter"
+     },
+     {
+      "product": "Omeprazole 20mg Caps",
+      "batch": "OMP2601G",
+      "expiry": "2027-06-21",
+      "days": 250,
+      "qty": 50,
+      "unit_cost": 0.22,
+      "value": 11,
+      "supplier": "Northgate Pharma",
+      "level": 60,
+      "status": "recalled",
+      "recall": "Packaging contamination risk",
+      "reason": "Recalled: Packaging contamination risk"
+     },
+     {
+      "product": "Salbutamol Inhaler 100mcg",
+      "batch": "SAL-0933",
+      "expiry": "2027-07-31",
+      "days": 290,
+      "qty": 8,
+      "unit_cost": 3.8,
+      "value": 30.4,
+      "supplier": "Northgate Pharma",
+      "level": 15,
+      "status": "recalled",
+      "recall": "Faulty dose counter",
+      "reason": "Recalled: Faulty dose counter"
+     }
+    ],
+    "total": 102.4,
+    "email": "Subject: Return request - 4 batch(es)\n\nHello Northgate Pharma,\n\nPlease arrange collection and credit for the following batches:\n\n- Omeprazole 20mg Caps | batch OMP2508F | qty 70 | Recalled: Packaging contamination risk\n- Salbutamol Inhaler 100mcg | batch SAL-0932 | qty 12 | Recalled: Faulty dose counter\n- Omeprazole 20mg Caps | batch OMP2601G | qty 50 | Recalled: Packaging contamination risk\n- Salbutamol Inhaler 100mcg | batch SAL-0933 | qty 8 | Recalled: Faulty dose counter\n\nThank you."
+   }
+  ],
+  "reorder": [
+   {
+    "product": "Omeprazole 20mg Caps",
+    "usable": 0,
+    "level": 60,
+    "suggest": 120,
+    "supplier": "Northgate Pharma"
+   },
+   {
+    "product": "Salbutamol Inhaler 100mcg",
+    "usable": 0,
+    "level": 15,
+    "suggest": 30,
+    "supplier": "Northgate Pharma"
+   },
+   {
+    "product": "Oral Rehydration Salts",
+    "usable": 0,
+    "level": 30,
+    "suggest": 60,
+    "supplier": "CareWell Supplies"
+   },
+   {
+    "product": "Ciprofloxacin 500mg Tabs",
+    "usable": 6,
+    "level": 20,
+    "suggest": 34,
+    "supplier": "Northgate Pharma"
+   },
+   {
+    "product": "Amoxicillin 500mg Caps",
+    "usable": 40,
+    "level": 80,
+    "suggest": 120,
+    "supplier": "MedLine Distributors"
+   },
+   {
+    "product": "Paracetamol 500mg Tabs",
+    "usable": 150,
+    "level": 300,
+    "suggest": 450,
+    "supplier": "CareWell Supplies"
+   },
+   {
+    "product": "Atorvastatin 20mg Tabs",
+    "usable": 30,
+    "level": 40,
+    "suggest": 50,
+    "supplier": "MedLine Distributors"
+   },
+   {
+    "product": "Ibuprofen 400mg Tabs",
+    "usable": 80,
+    "level": 100,
+    "suggest": 120,
+    "supplier": "CareWell Supplies"
+   },
+   {
+    "product": "Cetirizine 10mg Tabs",
+    "usable": 45,
+    "level": 50,
+    "suggest": 55,
+    "supplier": "CareWell Supplies"
+   }
+  ],
+  "facts": "Check date 2026-10-14. 20 batches checked. 5 recalled, 3 expired, 3 expiring within 30 days, 2 expiring within 90 days. Value at risk $179.95. 9 products below reorder level.",
+  "settings": {
+   "critical": 30,
+   "warning": 90
+  },
+  "notes": [],
+  "ai": {
+   "used": true,
+   "model": "llama3.2",
+   "summary": "As of 2026-10-14, our recent inventory checks revealed a total of 20 batches, with 5 batches recalled, 3 batches expired, and 3 batches expiring within the next 30 days. Additionally, 2 batches are set to expire within the next 90 days, with a total value at risk of $179.95. Notably, 9 products are currently below their reorder levels.",
+   "seconds": 129.2,
+   "asked": true
+  }
+ }
+}

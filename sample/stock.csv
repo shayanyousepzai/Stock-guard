@@ -1,0 +1,21 @@
+Item Name,Batch No.,Exp. Date,Qty On Hand,Cost Price,Supplier,Min Stock
+Amoxicillin 500mg Caps,AMX2405B,30-08-2026,60,0.45,MedLine Distributors,80
+Amoxicillin 500mg Caps,AMX2611A,12/05/2027,40,0.45,MedLine Distributors,80
+Paracetamol 500mg Tabs,PCM2310K,04/10/2026,200,0.05,CareWell Supplies,300
+Paracetamol 500mg Tabs,PCM2702D,Aug 2027,150,0.05,CareWell Supplies,300
+Metformin 500mg Tabs,MET2611C,03/03/2027,90,0.12,MedLine Distributors,100
+Metformin 500mg Tabs,MET2702A,18/11/2027,120,0.12,MedLine Distributors,100
+Omeprazole 20mg Caps,OMP2508F,Jan 2027,70,0.22,Northgate Pharma,60
+Omeprazole 20mg Caps,OMP2601G,21/06/2027,50,0.22,Northgate Pharma,60
+Salbutamol Inhaler 100mcg,SAL-0932,12/04/2027,12,3.8,Northgate Pharma,15
+Salbutamol Inhaler 100mcg,SAL-0933,Jul 2027,8,3.8,Northgate Pharma,15
+Ibuprofen 400mg Tabs,IBU2412M,17/10/2026,80,0.07,CareWell Supplies,100
+Cetirizine 10mg Tabs,CET2501P,26/10/2026,45,0.09,CareWell Supplies,50
+Atorvastatin 20mg Tabs,ATV2509R,08-11-2026,30,0.31,MedLine Distributors,40
+Loratadine 10mg Tabs,LOR2507T,23/11/2026,55,0.08,CareWell Supplies,40
+Azithromycin 250mg Tabs,AZI2509V,23/12/2026,24,0.95,Northgate Pharma,20
+Amlodipine 5mg Tabs,AML2603W,Feb 2027,100,0.1,MedLine Distributors,60
+Vitamin D3 1000IU Caps,VTD2701X,10/08/2027,90,0.06,CareWell Supplies,50
+Oral Rehydration Salts,ORS2504Z,16/07/2026,36,0.3,CareWell Supplies,30
+Ciprofloxacin 500mg Tabs,CIP2606H,May 2027,6,0.55,Northgate Pharma,20
+Diclofenac Gel 1%,DIC2602J,23/03/2027,14,2.4,MedLine Distributors,10

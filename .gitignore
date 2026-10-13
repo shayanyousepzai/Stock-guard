@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+private/
+real-stock/
+*.log
+video/out/
+docs/dev-post.md

@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: stock-guard-demo
+    runtime: python
+    plan: free
+    buildCommand: "echo no dependencies"
+    startCommand: python -m stockguard --host 0.0.0.0 --no-browser

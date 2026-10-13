@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stock Guard</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f4d3a'/%3E%3Cpath d='M9 16h14M16 9v14' stroke='%23f3efe6' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#f4f0e6; --card:#fbf8f1; --ink:#1c2a23; --mute:#6b7569; --line:#ddd6c4; --pine:#1f4d3a; --pine-soft:#dfe9e0;
+  --red:#c2432b; --amber:#c98a10; --ochre:#8f8a2c; --plum:#6a2e5c; --ok:#3f7a56;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; --mono:ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#111915; --card:#18211c; --ink:#e9e4d6; --mute:#9aa496; --line:#2b372f; --pine:#7fc7a0; --pine-soft:#1d2d24;
+  --red:#ee7a5f; --amber:#e6b04a; --ochre:#c3be57; --plum:#c78bb9; --ok:#7fc7a0;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--sans);
+  background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:22px 22px}
+.app{display:grid;grid-template-columns:340px 1fr;min-height:100vh}
+aside{background:var(--card);border-right:1px solid var(--line);padding:28px 24px;position:sticky;top:0;height:100vh;overflow:auto}
+main{padding:36px clamp(20px,4vw,56px) 80px;max-width:1100px}
+.brand{display:flex;gap:12px;align-items:center;margin-bottom:26px}
+.brand svg{flex:none}
+h1{font:600 24px/1 var(--serif);margin:0;letter-spacing:-.01em}
+.brand p{margin:4px 0 0;color:var(--mute);font-size:12.5px;line-height:1.3}
+h2{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:22px 0 8px}
+.drop{border:1.5px dashed var(--line);border-radius:12px;padding:18px;text-align:center;cursor:pointer;color:var(--mute);transition:.15s;background:var(--paper)}
+.drop:hover,.drop.on{border-color:var(--pine);color:var(--pine);background:var(--pine-soft)}
+.drop b{display:block;color:var(--ink);font-weight:600}
+.drop.loaded{border-style:solid;border-color:var(--pine);color:var(--pine)}
+textarea,input,select{width:100%;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+textarea{min-height:120px;resize:vertical;font:12.5px/1.45 var(--mono)}
+textarea:focus,input:focus,select:focus{outline:2px solid var(--pine);outline-offset:1px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label.f{font-size:12px;color:var(--mute);display:block}
+label.f input,label.f select{margin-top:3px}
+.ai{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:10px;margin-top:12px;background:var(--paper)}
+.ai input{width:auto;margin-top:3px;accent-color:var(--pine)}
+.ai small{display:block;color:var(--mute);font-size:12px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mute);margin-right:6px}
+.dot.up{background:var(--ok)} .dot.down{background:var(--red)}
+button{font:inherit;cursor:pointer;border-radius:10px;border:1px solid transparent;padding:11px 16px;font-weight:600}
+.run{width:100%;margin-top:18px;background:var(--pine);color:var(--paper);font-size:15px}
+.run:hover{filter:brightness(1.1)} .run:disabled{opacity:.6;cursor:wait}
+.ghost{background:none;border-color:var(--line);color:var(--ink);font-weight:500;padding:8px 12px;font-size:13px}
+.ghost:hover{border-color:var(--pine);color:var(--pine)}
+.sample{width:100%;margin-top:8px}
+.eyebrow{font:600 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.hero h2{font:600 clamp(28px,4.2vw,44px)/1.08 var(--serif);letter-spacing:-.02em;margin:8px 0 6px;text-transform:none;color:var(--ink)}
+.hero h2 em{font-style:italic;color:var(--red)}
+.hero p{color:var(--mute);margin:0;max-width:60ch}
+.empty{margin-top:12vh;max-width:520px}
+.empty h2{font:600 40px/1.08 var(--serif);text-transform:none;letter-spacing:-.02em;color:var(--ink);margin:10px 0}
+.empty ol{color:var(--mute);padding-left:18px}
+.note{margin:22px 0;padding:16px 18px 16px 20px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pine);border-radius:4px 12px 12px 4px}
+.note q{font:italic 17px/1.5 var(--serif);quotes:none;display:block}
+.note .tag{font:600 10.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--pine);margin-bottom:6px;display:block}
+.note.off{border-left-color:var(--line);color:var(--mute);font-size:13px}
+.stamps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0}
+.stamp{all:unset;box-sizing:border-box;cursor:pointer;background:var(--card);border:1.5px solid var(--c);border-radius:6px;padding:12px 14px;position:relative;transition:.15s}
+.stamp:hover,.stamp.sel{background:color-mix(in srgb,var(--c) 12%,var(--card));transform:translateY(-2px) rotate(-.4deg)}
+.stamp .n{font:600 34px/1 var(--serif);color:var(--c)}
+.stamp .l{font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin-top:4px}
+.stamp .v{font-size:12.5px;color:var(--mute);margin-top:2px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-top:8px;overflow-x:auto}
+.tab{background:none;border:0;border-bottom:3px solid transparent;border-radius:0;color:var(--mute);padding:10px 14px;font-weight:600;white-space:nowrap}
+.tab.on{color:var(--ink);border-color:var(--pine)}
+.tab span{font:500 12px var(--mono);background:var(--line);border-radius:99px;padding:1px 7px;margin-left:5px;color:var(--ink)}
+.panel{margin-top:16px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:14px}
+th{font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--paper)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono);font-size:12.5px}
+.sub{color:var(--mute);font-size:12.5px}
+.chip{display:inline-block;font:700 10.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--c);border:1.5px solid var(--c);border-radius:4px;padding:2px 6px;transform:rotate(-1.5deg);white-space:nowrap}
+.bar{height:6px;width:90px;background:var(--line);border-radius:9px;overflow:hidden;display:inline-block;vertical-align:middle;margin-right:8px}
+.bar i{display:block;height:100%;background:var(--c)}
+.cards{display:grid;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h3{font:600 19px var(--serif);margin:0}
+.card ul{margin:10px 0;padding-left:18px}
+details{margin-top:8px} summary{cursor:pointer;color:var(--pine);font-weight:600;font-size:13px}
+pre{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px;white-space:pre-wrap;font:12.5px/1.5 var(--mono);margin:8px 0}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.warn{margin:16px 0;padding:10px 14px;background:color-mix(in srgb,var(--amber) 14%,var(--card));border:1px solid var(--amber);border-radius:10px;font-size:13px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:10px;font-size:14px;z-index:9}
+.fine{color:var(--mute);font-size:12px;margin-top:22px}
+@media(max-width:900px){.app{grid-template-columns:1fr}aside{position:static;height:auto;border:0;border-bottom:1px solid var(--line)}th:nth-child(n+6),td:nth-child(n+6){display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="brand">
+    <svg width="40" height="40" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--pine)"/><path d="M9 16h14M16 9v14" stroke="var(--paper)" stroke-width="4" stroke-linecap="round"/></svg>
+    <div><h1>Stock Guard</h1><p>Expiry, recall and reorder checks that never leave this PC.</p></div>
+  </div>
+  <h2>1 · Stock file</h2>
+  <div class="drop" id="drop"><b id="dropTitle">Drop a CSV here</b><span id="dropSub">or click to choose. Export from your billing system.</span></div>
+  <input type="file" id="file" accept=".csv,.txt,text/csv" hidden>
+  <h2>2 · Recall notices <span style="text-transform:none;letter-spacing:0;font-weight:400">(optional)</span></h2>
+  <textarea id="recalls" placeholder="Paste notices from the regulator or a supplier. Separate several with a line of ---"></textarea>
+  <h2>3 · Rules</h2>
+  <div class="two">
+    <label class="f">Urgent within (days)<input type="number" id="critical" value="30" min="1"></label>
+    <label class="f">Watch within (days)<input type="number" id="warning" value="90" min="1"></label>
+    <label class="f">Date order<select id="order"><option value="dmy">Day / Month</option><option value="mdy">Month / Day</option></select></label>
+    <label class="f">Currency<input id="currency" value="$" maxlength="3"></label>
+  </div>
+  <label class="ai"><input type="checkbox" id="ai" checked>
+    <span><b>Use the local AI model</b><small><span class="dot" id="dot"></span><span id="aiState">checking Ollama…</span></small></span></label>
+  <button class="run" id="run">Run the check</button>
+  <button class="ghost sample" id="sample">Try a sample shelf</button>
+  <p class="fine">Everything is processed on this computer. Nothing is uploaded. Stock Guard flags stock only and gives no clinical advice.</p>
+</aside>
+
+<main id="out">
+  <div class="empty">
+    <div class="eyebrow">Pharmacy Stock Guard</div>
+    <h2>Catch the money before it expires.</h2>
+    <ol><li>Drop in your stock export.</li><li>Paste any recall notices you have received.</li><li>Get a return list per supplier and a reorder list.</li></ol>
+    <p class="sub">No file handy? Press <b>Try a sample shelf</b>.</p>
+  </div>
+</main>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let stockText="",data=null,tab="attention",filter=null;
+const COL={recalled:"var(--plum)",expired:"var(--red)",critical:"var(--amber)",warning:"var(--ochre)",ok:"var(--ok)"};
+const LBL={recalled:"Recalled",expired:"Expired",critical:"Urgent",warning:"Watch",ok:"OK"};
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sym=()=>$("currency").value;
+const money=v=>sym()+Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+const toast=m=>{const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),2600)};
+
+fetch("/api/status").then(r=>r.json()).then(s=>{
+  $("dot").className="dot "+(s.up&&s.has_model?"up":"down");
+  $("aiState").textContent=!s.up?"Ollama not running. Checks still work with rules only.":!s.has_model?`Model "${s.model}" not installed. Run: ollama pull ${s.model}`:`Ollama ready · ${s.model}`;
+  if(!s.up||!s.has_model)$("ai").checked=false;
+}).catch(()=>{});
+
+function setFile(name,text){stockText=text;$("drop").classList.add("loaded");$("dropTitle").textContent=name;
+  $("dropSub").textContent=(text.split(/\r?\n/).filter(Boolean).length-1)+" rows read";}
+const readFile=f=>f.text().then(t=>setFile(f.name,t));
+$("drop").onclick=()=>$("file").click();
+$("file").onchange=e=>e.target.files[0]&&readFile(e.target.files[0]);
+["dragover","dragenter"].forEach(ev=>$("drop").addEventListener(ev,e=>{e.preventDefault();$("drop").classList.add("on")}));
+["dragleave","drop"].forEach(ev=>$("drop").addEventListener(ev,e=>{e.preventDefault();$("drop").classList.remove("on")}));
+$("drop").addEventListener("drop",e=>e.dataTransfer.files[0]&&readFile(e.dataTransfer.files[0]));
+$("sample").onclick=async()=>{const s=await (await fetch("/api/sample")).json();setFile("sample-shelf.csv",s.stock_csv);$("recalls").value=s.recalls;run()};
+$("run").onclick=run;
+
+async function run(){
+  if(!stockText.trim())return toast("Add a stock file first.");
+  const b=$("run");b.disabled=true;b.textContent=$("ai").checked?"Reading with the local model…":"Checking…";
+  try{
+    const r=await fetch("/api/analyze",{method:"POST",body:JSON.stringify({stock_csv:stockText,recalls:$("recalls").value,ai:$("ai").checked,
+      critical:$("critical").value,warning:$("warning").value,date_order:$("order").value,currency:sym()})});
+    const j=await r.json();if(!r.ok)throw new Error(j.error);
+    data=j;tab=j.attention?"attention":"all";filter=null;render();
+  }catch(e){toast(e.message)}finally{b.disabled=false;b.textContent="Run the check"}
+}
+
+function render(){
+  const d=data,s=d.stats,n=d.attention;
+  const fmtDate=iso=>new Date(iso+"T00:00").toLocaleDateString(undefined,{day:"numeric",month:"short",year:"numeric"});
+  const head=n?`<em>${n}</em> batch${n>1?"es":""} need you today.`:`Shelves look clean.`;
+  const sub=n?`${money(d.at_risk)} of stock is expired, recalled or expiring within ${d.settings.critical} days. Checked ${d.rows_total} batches on ${fmtDate(d.today)}.`:`${d.rows_total} batches checked on ${fmtDate(d.today)}. Nothing expired, recalled or urgent.`;
+  const note=d.ai.summary?`<div class="note"><span class="tag">Briefing · written by ${esc(d.ai.model)} on this PC · ${d.ai.seconds}s</span><q>${esc(d.ai.summary)}</q></div>`
+    :`<div class="note off">${d.ai.asked&&!d.ai.used?"Ollama was not reachable, so this check used rules only.":"AI is off. Every list below is produced by rules, so nothing depends on the model."}</div>`;
+  const stamps=["recalled","expired","critical","warning"].map(k=>`<button class="stamp ${filter===k?"sel":""}" style="--c:${COL[k]}" data-f="${k}">
+    <div class="n">${s[k].count}</div><div class="l">${LBL[k]}</div><div class="v">${money(s[k].value)}</div></button>`).join("");
+  const tabs=[["attention","Needs attention",n],["recalls","Recalls",d.recalls.length],["returns","Returns",d.returns.length],["reorder","Reorder",d.reorder.length],["all","All stock",d.rows_total]]
+    .map(([k,l,c])=>`<button class="tab ${tab===k?"on":""}" data-t="${k}">${l}<span>${c}</span></button>`).join("");
+  const warns=[...d.notes,...(d.bad_rows.length?[`${d.bad_rows.length} row(s) could not be read and were skipped (line ${d.bad_rows.map(r=>r.line).slice(0,5).join(", ")}${d.bad_rows.length>5?"…":""}). Check them by hand.`]:[])]
+    .map(w=>`<div class="warn">${esc(w)}</div>`).join("");
+  $("out").innerHTML=`<div class="hero"><div class="eyebrow">Shelf check · ${fmtDate(d.today)}</div><h2>${head}</h2><p>${sub}</p></div>${note}${warns}
+    <div class="stamps">${stamps}</div><div class="tabs">${tabs}</div><div class="panel" id="panel"></div>
+    <p class="fine">Columns used: ${Object.entries(d.mapping).map(([k,v])=>`${k} ← “${esc(v)}”`).join(" · ")}</p>`;
+  $("out").querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{tab=b.dataset.t;filter=null;render()});
+  $("out").querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{filter=filter===b.dataset.f?null:b.dataset.f;tab="all";render()});
+  panel();
+}
+
+function rows(list){
+  if(!list.length)return `<p class="sub">Nothing here.</p>`;
+  return `<table><thead><tr><th>Status</th><th>Product</th><th>Batch</th><th>Shelf life</th><th class="num">Qty</th><th class="num">Value</th><th>Supplier</th></tr></thead><tbody>`+
+    list.map(i=>{const pct=Math.max(0,Math.min(100,i.days/180*100));
+      const when=i.days<0?`${-i.days}d ago`:i.days===0?"today":`${i.days}d left`;
+      return `<tr><td><span class="chip" style="--c:${COL[i.status]}">${LBL[i.status]}</span></td>
+      <td><b>${esc(i.product)}</b>${i.recall?`<div class="sub">${esc(i.recall)}</div>`:""}</td><td class="mono">${esc(i.batch)}</td>
+      <td><span class="bar" style="--c:${COL[i.status]}"><i style="width:${pct}%"></i></span><span class="sub">${when} · ${esc(i.expiry)}</span></td>
+      <td class="num">${i.qty}</td><td class="num">${i.unit_cost==null?"–":money(i.value)}</td><td class="sub">${esc(i.supplier)}</td></tr>`}).join("")+`</tbody></table>`;
+}
+
+function panel(){
+  const d=data,p=$("panel");let h="";
+  if(tab==="attention")h=rows(d.items.filter(i=>["recalled","expired","critical"].includes(i.status)));
+  else if(tab==="all")h=rows(filter?d.items.filter(i=>i.status===filter):d.items);
+  else if(tab==="recalls")h=d.recalls.length?`<div class="cards">`+d.recalls.map(r=>`<div class="card"><header><h3>${esc(r.product||"Product not stated")}</h3>
+    <span class="chip" style="--c:${COL.recalled}">${r.matched} on your shelf</span></header>
+    <p class="sub" style="margin:6px 0">${esc(r.reason)}</p>
+    <div>${r.all_batches?`<span class="chip" style="--c:${COL.expired}">All batches</span> `:""}${r.batch_numbers.map(b=>`<span class="mono" style="margin-right:10px">${esc(b)}</span>`).join("")}</div></div>`).join("")+`</div>`
+    :`<p class="sub">No recall notices were added.</p>`;
+  else if(tab==="returns")h=d.returns.length?`<div class="actions" style="margin:0 0 12px"><button class="ghost" id="dlReturns">Download returns.csv</button></div><div class="cards">`+
+    d.returns.map((g,k)=>`<div class="card"><header><h3>${esc(g.supplier)}</h3><span class="sub">${g.items.length} batch(es) · ${money(g.total)}</span></header>
+    <ul>${g.items.map(i=>`<li><b>${esc(i.product)}</b> <span class="mono">${esc(i.batch)}</span> ×${i.qty} <span class="sub">· ${esc(i.reason)}</span></li>`).join("")}</ul>
+    <details><summary>Draft email</summary><pre>${esc(g.email)}</pre></details><div class="actions"><button class="ghost" data-copy="${k}">Copy email</button></div></div>`).join("")+`</div>`
+    :`<p class="sub">Nothing to return.</p>`;
+  else if(tab==="reorder")h=d.reorder.length?`<div class="actions" style="margin:0 0 12px"><button class="ghost" id="dlReorder">Download reorder.csv</button></div><table><thead><tr><th>Product</th><th class="num">Usable</th><th class="num">Minimum</th><th class="num">Suggest ordering</th><th>Supplier</th></tr></thead><tbody>`+
+    d.reorder.map(r=>`<tr><td><b>${esc(r.product)}</b></td><td class="num">${r.usable}</td><td class="num">${r.level}</td><td class="num"><b>${r.suggest}</b></td><td class="sub">${esc(r.supplier)}</td></tr>`).join("")+`</tbody></table><p class="sub">Usable excludes expired and recalled batches.</p>`
+    :`<p class="sub">Nothing is below its minimum level (or the file has no minimum column).</p>`;
+  p.innerHTML=h;
+  p.querySelectorAll("[data-copy]").forEach(b=>b.onclick=()=>navigator.clipboard.writeText(d.returns[b.dataset.copy].email).then(()=>toast("Email copied")));
+  if($("dlReturns"))$("dlReturns").onclick=()=>csv("returns.csv",["supplier","product","batch","qty","value","reason"],d.returns.flatMap(g=>g.items.map(i=>[g.supplier,i.product,i.batch,i.qty,i.value,i.reason])));
+  if($("dlReorder"))$("dlReorder").onclick=()=>csv("reorder.csv",["product","usable","minimum","suggest_order","supplier"],d.reorder.map(r=>[r.product,r.usable,r.level,r.suggest,r.supplier]));
+}
+function csv(name,head,rs){
+  const q=v=>/[",\n]/.test(v)?`"${String(v).replace(/"/g,'""')}"`:v;
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([[head,...rs].map(r=>r.map(q).join(",")).join("\n")],{type:"text/csv"}));a.download=name;a.click();
+}
+</script>
+</body>
+</html>
